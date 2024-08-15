@@ -294,18 +294,20 @@
 \renewcommand{\listfigurename}{List of Images}
 
 \usepackage{fontawesome5}
+\definecolor{jargonbusterblue}{HTML}{0077b6}
 
 \newtcolorbox{jargonbuster}[1][]{%
 	enhanced,
-	colback=blue!5!white,
-	colframe=blue!75!black,
+	colback=jargonbusterblue!10!white,
+	colframe=jargonbusterblue,
 	fonttitle=\bfseries,
 	title={\faLightbulb\space Jargon Buster},
 	attach boxed title to top left={yshift=-3mm,xshift=2mm},
-	boxed title style={size=small,colback=blue!75!black},
+	boxed title style={size=small,colback=jargonbusterblue},
 	top=15pt, % Increased top padding
 	bottom=10pt, % Added bottom padding for balance
 	left=10pt, % Added left padding
 	right=10pt, % Added right padding
 	#1
 }
+
