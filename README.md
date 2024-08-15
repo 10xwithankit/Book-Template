@@ -1,2 +1,2 @@
-# The Spreadsheet Innovator's Blueprint: Analytics, Automation, and AI
-A Comprehensive Guide to Building, Deploying, and Monetizing AI-Powered Google Sheets Add-ons
+# The Book Template
+This repository serves as a template for authors, developers, and educators who want to create structured, professional books, guides, or tutorials 
