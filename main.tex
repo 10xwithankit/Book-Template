@@ -1,0 +1,30 @@
+\documentclass[10pt]{book}
+\usepackage{1to10x}
+
+%======= FILL THESES=======
+%========================
+\newcommand{\customfirstname}{}
+\newcommand{\customlastname}{}
+%========================
+%========================
+
+\input{frontmatter/metadata} % Include all the front matter metadata 
+
+\begin{document}
+	
+%	\firstname \space \lastname
+	
+	\include{frontmatter/cover}
+	\include{frontmatter/inner_title}
+	\include{frontmatter/blank_page}
+	\include{frontmatter/full_title}
+	\include{frontmatter/copyright}
+%	\include{frontmatter/dedication}
+	\include{frontmatter/toc}
+	
+	% Include sections
+	\include{sections/section0/titlepage}
+	\include{sections/section0/content}
+
+\end{document}
+

@@ -1,0 +1,292 @@
+\ProvidesPackage{1to10x}
+
+% Page layout settings
+\usepackage{geometry}
+\geometry{
+	paperwidth=7in,        % Paper width
+	paperheight=9in,       % Paper height
+	inner=1in,             % Inner margin (binding side)
+	outer=1in,             % Outer margin
+	top=1in,               % Top margin
+	bottom=1in,            % Bottom margin
+	headheight=\baselineskip,
+	headsep=2\baselineskip,
+	marginparsep=0mm,      % No space for margin notes
+	marginparwidth=0mm,    % No margin note width
+}
+
+% Additional packages
+\usepackage{fancyhdr}
+
+
+% Remove numbering from captions for listings
+
+\hfuzz=1000pt % allows hboxes to be up to 1pt overfull before an error occurs.
+\vfuzz=1000pt
+\usepackage[footnotesize]{caption}
+\usepackage{graphicx, type1cm}
+
+\graphicspath{{graphics/}}
+\usepackage[utf8x]{inputenc}
+\usepackage{babel}
+\usepackage{blindtext}
+\usepackage{microtype}
+\usepackage{fancyvrb}
+\usepackage{soul}
+\sethlcolor{LightGray}
+\raggedbottom
+\usepackage{emptypage}
+\usepackage{xcolor} % Required for \pagecolor
+\usepackage{array} %package gives you more control over the alignment and formatting of table cells,
+\usepackage{booktabs} %provides professional-quality table lines
+\usepackage{colortbl} % allows you to color table rows and cells.
+\usepackage{setspace} % Required for line spacing
+\usepackage{tikz} % Required for fancy elements
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows} 
+\usetikzlibrary{shapes.geometric, positioning}
+\usepackage{titlesec} % Required for customizing section spacing
+\usepackage{epigraph}
+\usepackage{wrapfig}
+\usepackage{libertine}
+\usepackage{float} % for the [H] option in figures
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+
+\usepackage{multirow}
+\usepackage[most]{tcolorbox}  % The 'most' library loads the commonly used libraries
+\usepackage{ifthen}
+\usepackage{multicol} % Package for creating multiple columns
+\usepackage{enumitem} % Package for customizing lists
+
+
+\usepackage{currfile}
+\usepackage{listings}
+
+\renewcommand{\arraystretch}{1.2} %is used to adjust the row height (or spacing) in rows
+
+% Epigraph settings
+\setlength\epigraphwidth{0.7\textwidth}
+\setlength\epigraphrule{0pt}
+\renewcommand{\textflush}{flushleft} % To align left
+%\renewcommand{\sourceflush}{flushleft} % Uncomment if you also want to align the source to the left
+
+% Define custom color
+\definecolor{customblue}{HTML}{21569A}
+\definecolor{lightgray}{gray}{0.9}
+\definecolor{lightergray}{gray}{0.95}
+\definecolor{lightyellow}{HTML}{fcfaf5}
+
+
+% ==== LISTING package mods
+% Define colors
+% Define colors
+\definecolor{background}{RGB}{248,248,248}
+\definecolor{linenum}{RGB}{125,125,125}
+\definecolor{comment}{RGB}{2,112,10}
+\definecolor{keyword}{RGB}{25,25,150}
+\definecolor{string}{RGB}{163,21,21}
+\definecolor{servicecolor}{RGB}{127,0,85}
+\definecolor{numbercolor}{RGB}{0,128,128}
+\definecolor{booleancolor}{RGB}{255,140,50}
+
+
+
+\renewcommand{\lstlistingname}{Code}
+% Modify the caption format to remove numbering but keep "Code Block"
+
+
+% Define AppsScript language
+\lstdefinelanguage{AppsScript}{
+	keywords={
+		% Basic JavaScript keywords
+		function, var, let, const, return, if, else, for, while, do, switch, case, break, continue, try, catch, throw
+	},
+	otherkeywords={<-,->, |>, \%\{, \}, \{, \, (, )},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+	morestring=[b]`,  % Template literals
+	morekeywords=[2]{Class, Logger, Properties, PropertiesService, SpreadsheetApp, HtmlService, UrlFetchApp, DriveApp, DocumentApp, 
+		GmailApp, CalendarApp, Charts, Utilities, ScriptApp},
+}
+
+% Custom style for AppsScript
+\lstdefinestyle{CustomAppsScript}{
+	language=AppsScript,
+	backgroundcolor=\color{background},
+	numbers=left,
+	numberstyle=\tiny\color{linenum},
+	stepnumber=1,
+	numbersep=20pt, % Space between line numbers and code
+	framesep=10pt, % Padding between code and frame
+	xleftmargin=0pt, % No extra margin on the left (excluding line numbers)
+	xrightmargin=0pt, % No extra margin on the right
+	tabsize=2,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	breaklines=true,
+	breakautoindent=true,
+	breakindent=20pt,
+	frame=tblr,
+	framerule=1.5pt,
+	resetmargins=false,
+	rulecolor=\color{gray!10},
+	aboveskip=15pt, % Adjust the space above the listing
+	belowskip=15pt, % Adjust the space below the listing
+	basicstyle=\fontfamily{zi4}\footnotesize\color{black},
+	keywordstyle=\color{keyword},
+	stringstyle=\color{string},
+	commentstyle=\color{comment},
+	captionpos=b,
+	identifierstyle=\color{black},
+	morecomment=[s][\color{comment}]{/**}{*/},
+	keywordstyle=[2]{\color{servicecolor}},
+	literate=*
+	{true}{{{\color{booleancolor}true}}}4
+	{false}{{{\color{booleancolor}false}}}5
+	{null}{{{\color{booleancolor}null}}}4
+	{.}{{{\color{black}.}}}1
+	{(}{{{\color{black}(}}}1
+	{)}{{{\color{black})}}}1
+	{0}{{{\color{numbercolor}0}}}1
+	{1}{{{\color{numbercolor}1}}}1
+	{2}{{{\color{numbercolor}2}}}1
+	{3}{{{\color{numbercolor}3}}}1
+	{4}{{{\color{numbercolor}4}}}1
+	{5}{{{\color{numbercolor}5}}}1
+	{6}{{{\color{numbercolor}6}}}1
+	{7}{{{\color{numbercolor}7}}}1
+	{8}{{{\color{numbercolor}8}}}1
+	{9}{{{\color{numbercolor}9}}}1,
+}
+
+
+
+% Use the custom style
+\lstset{style=CustomAppsScript}
+
+
+
+
+
+
+
+% Set paragraph skip
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
+ % Adjust this value as needed
+ 
+ 
+ 
+
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+%\titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
+
+
+% Customize \chaptermark to exclude "CHAPTER"
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+
+
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+\def\@makechapterhead#1{%
+	\vspace*{100\p@}% Adjust this value to reduce space before chapter heading
+	{\parindent \z@ \centering \reset@font
+		\thickhrulefill\quad
+		\scshape \@chapapp{} \thechapter
+		\quad \thickhrulefill
+		\par\nobreak
+		\vspace*{5\p@}% Adjust this value to reduce space between chapter number and rule
+		\interlinepenalty\@M
+		\hrule
+		\vspace*{5\p@}% Adjust this value to reduce space between rule and chapter title
+		\Huge \bfseries #1\par\nobreak
+		\par
+		\vspace*{10\p@}% Adjust this value to reduce space between chapter title and rule
+		\hrule
+		\vskip 5\p@% Adjust this value to reduce space after chapter heading
+	}
+}
+\def\@makeschapterhead#1{%
+	\vspace*{7\p@}% Adjust this value to reduce space before chapter heading
+	{\parindent \z@ \centering \reset@font
+		\thickhrulefill
+		\par\nobreak
+		\vspace*{5\p@}% Adjust this value to reduce space between chapter number and rule
+		\interlinepenalty\@M
+		\hrule
+		\vspace*{5\p@}% Adjust this value to reduce space between rule and chapter title
+		\Huge \bfseries #1\par\nobreak
+		\par
+		\vspace*{10\p@}% Adjust this value to reduce space between chapter title and rule
+		\hrule
+		\vskip 5\p@% Adjust this value to reduce space after chapter heading
+	}
+}
+\makeatother
+
+
+
+
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+% Header and footer settings
+\fancyhf{} % Clear all header and footer fields
+
+% Header settings
+\fancyhead[LO]{\leftmark} % Chapter name on the left side of even pages
+\fancyhead[RE]{\rightmark} % Section name on the right side of odd pages
+\fancyhead[LE,RO]{\thepage} % Page number on the left side of even pages and right side of odd pages
+\renewcommand{\headrulewidth}{0pt} % Add a horizontal line under the header
+
+% Footer settings
+\fancyfoot[LO]{\footnotesize \copyright\ 1to10x}
+\fancyfoot[RE]{\footnotesize \bookname}
+\fancyhfoffset[LE,RO]{\marginparwidth} % Shift header/footer to align with text block
+\renewcommand{\footrulewidth}{0pt} % Add a horizontal line above the footer
+
+% Apply the fancyhdr settings
+\pagestyle{fancy}
+
+
+% Define custom font sizes
+\makeatletter
+\newcommand\HUGE{\@setfontsize\HUGE{30}{40}}       % Adjusted size
+\newcommand\SuperHuge{\@setfontsize\SuperHuge{35}{45}} % Adjusted size
+\newcommand\SUPERHUGE{\@setfontsize\SUPERHUGE{45}{55}} % New custom size
+\newcommand\MONSTER{\@setfontsize\MONSTER{60}{70}}     % New custom size
+\makeatother
+
+
+\newcommand{\highlightedParagraph}[1]{
+	\noindent\begin{tikzpicture}
+		\draw[thick] (0,0) -- (\textwidth,0);
+	\end{tikzpicture}
+	\par
+	\begin{center}
+		\vspace{-1em}
+		\Large #1
+		\vspace{-1em}
+	\end{center}
+	% Adjust this value to reduce the bottom padding
+	\par
+	\noindent\begin{tikzpicture}
+		\draw[thick] (0,0) -- (\textwidth,0);
+	\end{tikzpicture}
+}
+
+
+\newcommand{\sectionnumber}{}
+\newcommand{\sectiontitle}{}
+\newcommand{\sectionsubtitle}{}
+
+
